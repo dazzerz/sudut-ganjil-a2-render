@@ -128,12 +128,12 @@ const TagihanOverlay: React.FC<{ items: string[]; f: number; dur: number }> = ({
               gap: 12,
               fontSize: 28,
               fontWeight: 900,
-              color: "#FF6B6B",
+              color: typeof item === "string" ? "#FF6B6B" : item.color,
               WebkitTextStroke: "3px #000",
               paintOrder: "stroke fill",
             }}
           >
-            <span>{item}</span>
+            <span>{typeof item === "string" ? item : `${item.label}: ${item.value}`}</span>
             <div style={{ width: 32 * s, height: 2, backgroundColor: "#FF6B6B" }} />
           </div>
         );
