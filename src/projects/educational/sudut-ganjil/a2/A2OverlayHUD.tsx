@@ -215,17 +215,14 @@ export const A2OverlayHUD: React.FC = () => {
   const dur = seg.duration_frames;
   const ov: A2Overlay = seg.overlay;
 
-  if (ov.type === "saldo" || ov.type === "pos") {
+  if (ov.type === "saldo" || ov.type === "pos" || ov.type === "tagihan") {
     return <SaldoOverlay label={ov.label} value={ov.value} color={ov.color} f={f} dur={dur} />;
   }
   if (ov.type === "chat") {
     return <ChatOverlay sender={ov.sender} msg={ov.msg} f={f} dur={dur} />;
   }
-  if (ov.type === "tagihan") {
-    return <TagihanOverlay items={ov.items} f={f} dur={dur} />;
-  }
   if (ov.type === "breakdown") {
-    return <BreakdownOverlay step={ov.step} f={f} dur={dur} />;
+    return <TagihanOverlay items={ov.items} f={f} dur={dur} />;
   }
   return null;
 };
